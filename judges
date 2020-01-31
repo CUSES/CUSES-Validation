@@ -304,10 +304,14 @@ FJ15<-ggplot(as.data.frame(it15jueces),
 Sfig1<-ggarrange(FJ1, FJ2, FJ3, FJ4,FJ5,FJ6, FJ7, FJ8, FJ9, FJ10, FJ11, FJ12, FJ13, FJ14, FJ15, common.legend = TRUE, ncol = 3, nrow = 5) # esta me gusta por el uso de la etiqueta común.. 
 Sfig1
 
+# Now will to analize data base to our Figure 2
 JA2$Itemreord <- factor(JA2$Item, c("item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9", "item10", "item11", "item12", "item13", "item14", "item15"))
 JA2$Factoreord <- factor(JA2$Factor, c("Appropriation", "Partner disapproval", "Assertiveness", "Self control" , "Missing"))
 
+# This function allows you to see the items organized from least to greatest
 mutate(JA2$Item = stats::fct_relevel(JA2$Item, "item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9", "item10", "item11", "item12", "item13", "item14", "item15")) %>%
+ 
+ #Now we will to create Figure 2 as follow:
   F2<-ggplot(as.data.frame(JA2), 
              aes(y = frec, axis1 = Itemreord, axis2 = Factoreord)) +
   geom_alluvium(aes(fill = Factoreord), width = 1/8) +
