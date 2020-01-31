@@ -1,0 +1,301 @@
+library(ggalluvial)
+library(ggplot2)
+library(ggplot)
+
+#ITEM1
+it1jueces$Rord <- factor(it1jueces$representativeness, c("High", "Moderate"))
+it1jueces$Cord <- factor(it1jueces$Comprehensiveness, c ("Excellent", "Good"))
+it1jueces$Iord <- factor (it1jueces$interpretability, c("Single", "Two ways"))
+it1jueces$Clord <- factor (it1jueces$Clarity, c("Very", "Quite"))
+it1jueces$Jord <- factor (it1jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+#ITEM2
+it2jueces$Rord <- factor(it2jueces$representativeness, c("High", "Moderate"))
+it2jueces$Cord <- factor(it2jueces$Comprehensiveness, c ("Excellent", "Good"))
+it2jueces$Iord <- factor (it2jueces$interpretability, c("Single", "Two ways", "Multiple"))
+it2jueces$Clord <- factor (it2jueces$Clarity, c("Very", "Quite"))
+it2jueces$Jord <- factor (it2jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+FJ2<-ggplot(as.data.frame(it2jueces),
+            aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + 
+  ggtitle("Item2: Tengo confianza en mi capacidad de usar un condón correctamente")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2))  
+
+#ITEM3
+it3jueces$Rord <- factor(it3jueces$representativeness, c("High", "Moderate"))
+it3jueces$Cord <- factor(it3jueces$Comprehensiveness, c ("Excellent", "Good"))
+it3jueces$Iord <- factor (it3jueces$interpretability, c("Single", "Two ways"))
+it3jueces$Clord <- factor (it3jueces$Clarity, c("Very", "Quite"))
+it3jueces$Jord <- factor (it3jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+FJ3<-ggplot(as.data.frame(it3jueces),
+            aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + 
+  ggtitle("Item3: Tengo confianza en que podría quitarme y botar un condón correctamente 
+           cuando tengo relaciones con penetración")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2)) 
+
+#ITEM4
+it4jueces$Rord <- factor(it4jueces$representativeness, c("High", "Moderate", "Low"))
+it4jueces$Cord <- factor(it4jueces$Comprehensiveness, c ("Excellent", "Good"))
+it4jueces$Iord <- factor (it4jueces$interpretability, c("Single", "Two ways"))
+it4jueces$Clord <- factor (it4jueces$Clarity, c("Very", "Quite"))
+it4jueces$Jord <- factor (it4jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+FJ4<-ggplot(as.data.frame(it4jueces),
+            aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + 
+  ggtitle("Item4: Tengo confianza en mi capacidad de ponerme un condón o ponérselo a mi pareja rápidamente")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2)) 
+
+#ITEM5
+it5jueces$Rord <- factor(it5jueces$representativeness, c("High", "Moderate", "Low"))
+it5jueces$Cord <- factor(it5jueces$Comprehensiveness, c ("Excellent", "Good", "Fair"))
+it5jueces$Iord <- factor (it5jueces$interpretability, c("Single", "Two ways"))
+it5jueces$Clord <- factor (it5jueces$Clarity, c("Very", "Quite", "Little", "missing"))
+it5jueces$Jord <- factor (it5jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+FJ5<-ggplot(as.data.frame(it5jueces),
+            aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + 
+  ggtitle("Item5: Si yo le sugiriera el uso del condón a mi pareja me daría miedo de que me rechazara")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2)) 
+
+#ITEM6
+it6jueces$Rord <- factor(it6jueces$representativeness, c("High", "Moderate", "Low"))
+it6jueces$Cord <- factor(it6jueces$Comprehensiveness, c ("Excellent", "Good"))
+it6jueces$Iord <- factor (it6jueces$interpretability, c("Single", "Two ways"))
+it6jueces$Clord <- factor (it6jueces$Clarity, c("Very", "Quite","Little"))
+it6jueces$Jord <- factor (it6jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+FJ6<-ggplot(as.data.frame(it6jueces),
+            aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + 
+  ggtitle("Item6:Si estoy inseguro(a) de cómo se siente mi pareja acerca del uso del condón,
+           no le sugeriría que lo use")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2)) 
+
+#ITEM7
+it7jueces$Rord <- factor(it7jueces$representativeness, c("High", "Moderate", "Low", "None"))
+it7jueces$Cord <- factor(it7jueces$Comprehensiveness, c ("Excellent", "Good"))
+it7jueces$Iord <- factor (it7jueces$interpretability, c("Single", "Two ways"))
+it7jueces$Clord <- factor (it7jueces$Clarity, c("Very", "Quite", "Little"))
+it7jueces$Jord <- factor (it7jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+FJ7<-ggplot(as.data.frame(it7jueces),
+            aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + 
+  ggtitle("Item7:No me sentiría tranquilo(a) al sugerirle a una nueva pareja que use condón porque me da miedo 
+           que piense que he tenido diversas parejas sexuales ")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2)) 
+
+#ITEM8
+it8jueces$Rord <- factor(it8jueces$representativeness, c("High", "Moderate", "Low"))
+it8jueces$Cord <- factor(it8jueces$Comprehensiveness, c ("Excellent", "Good", "Fair"))
+it8jueces$Iord <- factor (it8jueces$interpretability, c("Single", "Two ways"))
+it8jueces$Clord <- factor (it8jueces$Clarity, c("Very", "Quite", "Little"))
+it8jueces$Jord <- factor (it8jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+FJ8<-ggplot(as.data.frame(it8jueces),
+            aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + 
+  ggtitle("Item8:No me sentiría tranquilo(a) al sugerirle a una nueva pareja que use condón porque me da miedo 
+           que piense que tengo una infección de transmisión sexual")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2)) # para establecer el tipo de letra: 
+
+#ITEM9
+it9jueces$Rord <- factor(it9jueces$representativeness, c("High", "Moderate", "Low"))
+it9jueces$Cord <- factor(it9jueces$Comprehensiveness, c ("Excellent", "Good"))
+it9jueces$Iord <- factor (it9jueces$interpretability, c("Single", "Two ways"))
+it9jueces$Clord <- factor (it9jueces$Clarity, c("Very", "Quite"))
+it9jueces$Jord <- factor (it9jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+FJ9<-ggplot(as.data.frame(it9jueces),
+            aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + 
+  ggtitle("Item9:No me sentiría tranquilo(a) al sugerirle a una nueva pareja el uso del condón, porque temo 
+           que piense que yo creo que ha tenido una infección de transmisión sexual")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2)) 
+
+#ITEM10
+it10jueces$Rord <- factor(it10jueces$representativeness, c("High", "Moderate"))
+it10jueces$Cord <- factor(it10jueces$Comprehensiveness, c ("Excellent", "Good"))
+it10jueces$Iord <- factor (it10jueces$interpretability, c("Single", "Two ways"))
+it10jueces$Clord <- factor (it10jueces$Clarity, c("Very", "Quite"))
+it10jueces$Jord <- factor (it10jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+FJ10<-ggplot(as.data.frame(it10jueces),
+             aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + 
+  ggtitle("Item10:Tengo confianza en que puedo hablar sobre usar condón con cualquier pareja que tenga")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2)) 
+
+#ITEM11
+it11jueces$Rord <- factor(it11jueces$representativeness, c("High", "Moderate"))
+it11jueces$Cord <- factor(it11jueces$Comprehensiveness, c ("Excellent", "Good", "Fair"))
+it11jueces$Iord <- factor (it11jueces$interpretability, c("Single", "Two ways", "missing"))
+it11jueces$Clord <- factor (it11jueces$Clarity, c("Very", "Quite", "Little"))
+it11jueces$Jord <- factor (it11jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+FJ11<-ggplot(as.data.frame(it11jueces),
+             aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + # el set corresponde a la combinaci?n de colores
+  ggtitle("Item11:Tengo confianza en que puedo sugerir el uso del condón con una nueva pareja")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2)) # para establecer el tipo de letra: 
+
+#ITEM12
+it12jueces$Rord <- factor(it12jueces$representativeness, c("High", "Moderate", "Low"))
+it12jueces$Cord <- factor(it12jueces$Comprehensiveness, c ("Excellent", "Good", "Fair"))
+it12jueces$Iord <- factor (it12jueces$interpretability, c("Single", "Two ways", "Multiple"))
+it12jueces$Clord <- factor (it12jueces$Clarity, c("Very", "Quite"))
+it12jueces$Jord <- factor (it12jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+FJ12<-ggplot(as.data.frame(it12jueces),
+             aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + 
+  ggtitle("Item12:Tengo confianza en que podría sugerir el uso del condón sin etiquetar de <enferma> a mi pareja")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2))  
+
+#ITEM13
+it13jueces$Rord <- factor(it13jueces$representativeness, c("High", "Moderate", "Low"))
+it13jueces$Cord <- factor(it13jueces$Comprehensiveness, c ("Excellent", "Good"))
+it13jueces$Iord <- factor (it13jueces$interpretability, c("Single", "Two ways"))
+it13jueces$Clord <- factor (it13jueces$Clarity, c("Very", "Quite"))
+it13jueces$Jord <- factor (it13jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+FJ13<-ggplot(as.data.frame(it13jueces),
+             aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + 
+  ggtitle("Item13:Tengo confianza en que podría recordar el uso del condón incluso luego de beber")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2)) 
+
+#ITEM14
+it14jueces$Rord <- factor(it14jueces$representativeness, c("High", "Moderate", "Low"))
+it14jueces$Cord <- factor(it14jueces$Comprehensiveness, c ("Excellent", "Good"))
+it14jueces$Iord <- factor (it14jueces$interpretability, c("Single", "Two ways"))
+it14jueces$Clord <- factor (it14jueces$Clarity, c("Very", "Quite"))
+it14jueces$Jord <- factor (it14jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+FJ14<-ggplot(as.data.frame(it14jueces),
+             aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + 
+  ggtitle("Item14:Tengo confianza en que podría recordar el uso del condón incluso estando drogado")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2)) 
+
+#item 15
+it15jueces$Rord <- factor(it15jueces$representativeness, c("High", "Moderate", "Low"))
+it15jueces$Cord <- factor(it15jueces$Comprehensiveness, c ("Excellent", "Good", "Fair"))
+it15jueces$Iord <- factor (it15jueces$interpretability, c("Single", "Two ways", "Many ways"))
+it15jueces$Clord <- factor (it15jueces$Clarity, c("Very", "Quite", "Little"))
+it15jueces$Jord <- factor (it15jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
+
+FJ15<-ggplot(as.data.frame(it15jueces),
+             aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + 
+  ggtitle("Item15:Tengo confianza en que podría parar para ponerme un condón o ponérselo a mi pareja incluso 
+           si estoy muy excitado(a) sexualmente ")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2))  
+
+Figure
+Sfig1<-ggarrange(FJ1, FJ2, FJ3, FJ4,FJ5,FJ6, FJ7, FJ8, FJ9, FJ10, FJ11, FJ12, FJ13, FJ14, FJ15, common.legend = TRUE, ncol = 3, nrow = 5) # esta me gusta por el uso de la etiqueta común.. 
+Sfig1
+
+JA2$Itemreord <- factor(JA2$Item, c("item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9", "item10", "item11", "item12", "item13", "item14", "item15"))
+JA2$Factoreord <- factor(JA2$Factor, c("Appropriation", "Partner disapproval", "Assertiveness", "Self control" , "Missing"))
+
+mutate(JA2$Item = stats::fct_relevel(JA2$Item, "item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9", "item10", "item11", "item12", "item13", "item14", "item15")) %>%
+  F2<-ggplot(as.data.frame(JA2), 
+             aes(y = frec, axis1 = Itemreord, axis2 = Factoreord)) +
+  geom_alluvium(aes(fill = Factoreord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_text(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("Factor"), expand = c(.1, 0)) +
+  scale_fill_brewer(type = "qual", palette = "Set3") + 
+  ggtitle("Content Validity")+
+  xlab("Criterio")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10))
