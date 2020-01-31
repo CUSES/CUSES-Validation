@@ -1,7 +1,10 @@
+#we will open database from Rstudio
+#we will use this packages:
 library(ggalluvial)
 library(ggplot2)
 library(ggplot)
 
+#Now we will to reorder factors in each item, as follow
 #ITEM1
 it1jueces$Rord <- factor(it1jueces$representativeness, c("High", "Moderate"))
 it1jueces$Cord <- factor(it1jueces$Comprehensiveness, c ("Excellent", "Good"))
@@ -9,6 +12,20 @@ it1jueces$Iord <- factor (it1jueces$interpretability, c("Single", "Two ways"))
 it1jueces$Clord <- factor (it1jueces$Clarity, c("Very", "Quite"))
 it1jueces$Jord <- factor (it1jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
 
+#Now we will to create our figure. 
+FJ1<-ggplot(as.data.frame(it1jueces),
+            aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
+  geom_alluvium(aes(fill = Jord), width = 1/8) +
+  geom_stratum(width = 1/8, alpha=0.5) + 
+  geom_label(stat = "stratum", label.strata = TRUE, size = 3) + 
+  scale_x_discrete(limits = c("representativeness", "Comprehensiveness", "interpretability", "Clarity"), expand = c(.1, .1)) +
+  scale_fill_brewer(type = "qual", palette = "Paired") + 
+  ggtitle("Item2: Tengo confianza en mi capacidad de ponerme un condon o ponerselo a mi pareja")+
+  xlab("Dimensions")+
+  theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
+  scale_y_continuous(breaks=seq(0, 12, 2))  
+
+#use the same code to reorder factor in each item (use diferent database)
 #ITEM2
 it2jueces$Rord <- factor(it2jueces$representativeness, c("High", "Moderate"))
 it2jueces$Cord <- factor(it2jueces$Comprehensiveness, c ("Excellent", "Good"))
@@ -16,6 +33,7 @@ it2jueces$Iord <- factor (it2jueces$interpretability, c("Single", "Two ways", "M
 it2jueces$Clord <- factor (it2jueces$Clarity, c("Very", "Quite"))
 it2jueces$Jord <- factor (it2jueces$Jugde, c("judge1", "judge2", "judge3", "judge4", "judge5", "judge6", "judge7", "judge8", "judge9", "judge10", "judge11", "judge12"))
 
+#Use the same code to create each figure (use diferent database)
 FJ2<-ggplot(as.data.frame(it2jueces),
             aes(y = frec, axis1 = Rord, axis2 = Cord, axis3 = Iord, axis4 = Clord)) +
   geom_alluvium(aes(fill = Jord), width = 1/8) +
@@ -281,7 +299,8 @@ FJ15<-ggplot(as.data.frame(it15jueces),
   theme(plot.title = element_text(lineheight=.8, face="bold",hjust = 0.5, color = "black", size = 10)) + coord_cartesian(ylim=c(0, 12)) + 
   scale_y_continuous(breaks=seq(0, 12, 2))  
 
-Figure
+# Now we will to integrate in 1 Figure, as follow
+
 Sfig1<-ggarrange(FJ1, FJ2, FJ3, FJ4,FJ5,FJ6, FJ7, FJ8, FJ9, FJ10, FJ11, FJ12, FJ13, FJ14, FJ15, common.legend = TRUE, ncol = 3, nrow = 5) # esta me gusta por el uso de la etiqueta común.. 
 Sfig1
 
